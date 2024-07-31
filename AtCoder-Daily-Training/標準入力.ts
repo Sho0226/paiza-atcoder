@@ -1,13 +1,19 @@
-const lines=[];
-const reader = require('readline').createInterface({
-    input: process.stdin, //標準入力
-    output: process.stdout //標準出力
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
 });
 
-reader.on('line', function (line) {
-  lines.push(line);
-});
-reader.on('close', function () {
-    // この中に入力が終わった後の処理=ロジックを記載する。
+let inputLines: string[] = [];
+
+rl.on('line', (line: string) => {
+    inputLines.push(line);
+    if (inputLines.length === 2) {
+        rl.close();
+    }
 });
 
+rl.on('close', () => {
+
+});
